@@ -61,7 +61,7 @@ module Paperback
     # Returns a string representing the final resource path
     def resource_builder(resource, parameters={})
       u = Addressable::URI.new
-      u.path = assemble_path("/servicesNS/#{configuration[:username]}/#{configuration[:app]}/#{resource}")
+      u.path = assemble_path("/#{resource}")
       unless parameters.nil? || parameters.empty?
         # Let's remap and cast everything to a string.
         # Addressable doesn't handle values like true well.
