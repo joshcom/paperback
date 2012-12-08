@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+# File: script/console
+
+ENV["PAPERBACK_CONSOLE"] = "true"
+
+# Quick hack -- find a better way to do this.
+cli_location = if Dir.pwd.match(/script$/)
+                 File.dirname(__FILE__) + '/../lib/paperback/cli'
+               else
+                 'paperback/cli'
+               end
+require cli_location
+
+Paperback::CLI::ConsoleCLI.execute(STDOUT, ARGV)
