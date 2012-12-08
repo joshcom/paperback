@@ -5,22 +5,18 @@ module Paperback
   # The Splunk API client.
   # Methods include get, post, put, and delete HTTP helpers:
   #   c.get("...")
-  # See Splunker::Request for more details.
+  # See Paperback::Request for more details.
   class Client
     include Configuration
 
-    # Creates a new Splunker client instance.
+    # Creates a new Paperback client instance.
     # Options are:
-    # * :username   => Required. The username to make requests on behalf of
-    # * :password   => Required. The password to authenticate with
-    # * :auth_mode  => Required.  The authentication method to use.  :http_auth or :token_auth.
-    # * :endpoint   => ("https://localhost:8089") The host of the Splunk API
-    # * :ssl_verify => (true) If false, the SSL cert fro the Splunk server will not be verified.
-    # * :app        => ("search")
+    # * :key    => Required. Your goodreads API key
+    # * :secret => Required. Your goodreads API secret
     def initialize(options={})
       self.reset
 
-      (Configuration::MUTABLE_IMPLEMENTED_OPTION_KEYS + Configuration::MUTABLE_OPTION_KEYS).each do |key|
+      (Configuration::MUTABLE_OPTION_KEYS).each do |key|
         self.send "#{key}=", options[key] if options.include?(key)
       end
     end
