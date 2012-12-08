@@ -21,20 +21,10 @@ module Paperback
       end
     end
 
-    def auth_mode=(mode)
-      @request_handler = if mode.nil?
-                           nil
-                         else
-                           # Auth.create(mode, self)
-                            Rails.logger.warn "AUTH NOT YET IMPLEMENTED"
-                           nil
-                         end
-    end
-    
     def reset
       self.endpoint = DEFAULT_ENDPOINT
-      self.auth_mode = nil
-      @username = @password = nil
+      @request_handler = Auth.create(:oauth, self)
+      @key = @secret = nil
       self.request_handler.reset unless self.request_handler.nil?
     end
   end

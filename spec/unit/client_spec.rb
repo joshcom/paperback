@@ -9,17 +9,13 @@ describe Paperback::Client do
 
   context "requests" do
     it "should pass methods to request handler" do 
-=begin
       expect {
         client.get
       }.to raise_error ArgumentError
-=end
     end
 
     it "should respond to methods handled by request handler" do
-=begin
       client.respond_to?(:get).should be_true
-=end
     end
   end
 end
