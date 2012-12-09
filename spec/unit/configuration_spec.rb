@@ -11,7 +11,7 @@ describe Paperback::Configuration do
 
   it "should set return a default configuration" do
     configurable.reset
-    configurable.configuration[:endpoint].should eq("https://www.goodreads.com")
+    configurable.configuration[:endpoint].should eq("http://www.goodreads.com")
   end
 
   it "should be configurable" do

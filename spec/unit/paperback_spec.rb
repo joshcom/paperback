@@ -10,6 +10,6 @@ describe "Paperback" do
   end
 
   it "should call methods on the client object" do
-    client.configuration[:endpoint].should eq("https://www.goodreads.com")
+    client.configuration[:endpoint].should eq("http://www.goodreads.com")
   end
 end

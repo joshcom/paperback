@@ -7,7 +7,10 @@ module Paperback
 
     READONLY_OPTION_KEYS = [:request_handler]
 
-    DEFAULT_ENDPOINT = "https://www.goodreads.com"
+    # HTTPS doesn't appear to be supported by their API.
+    # The cert sure doesn't validate, and a hit to api/auth_user
+    # 302s to the http URI.
+    DEFAULT_ENDPOINT = "http://www.goodreads.com"
 
     def self.included(base)
       base.class_eval do

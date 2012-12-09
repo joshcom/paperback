@@ -18,6 +18,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency "faraday"
   gem.add_dependency "addressable"
   gem.add_dependency "json"
+  gem.add_dependency "nokogiri"
   gem.add_development_dependency "rspec", "~> 2.11"
   gem.add_development_dependency "rake", "~> 0.9.2"
   gem.add_development_dependency "webmock"
