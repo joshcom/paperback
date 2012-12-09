@@ -12,7 +12,6 @@ require "paperback/models"
 # Paperback.client({ :options => "..." }), as they all reference Paperback.client
 # when they make requests.
 module Paperback
-
   # Returns a reference to the current Paperback API client if no options are
   # supplied.  Otherwise, generates a new Paperback client.
   #

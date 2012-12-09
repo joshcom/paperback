@@ -10,7 +10,7 @@ module Paperback
     require 'addressable/uri'
 
     # Authenticates the user (not the request) identified by
-    # :username and :password in the configuration.
+    # :key and :secret in the configuration.
     def authenticate; end
 
     # true if #authenticate does _not_ need to be called.
@@ -53,7 +53,7 @@ module Paperback
     # Raises an exception from Paperback::Errors in accordance with the status code.
     def request(method, resource, parameters={}, body={})
       authenticate unless authenticated?
-      authenticate_connection(self.connection)
+      authenticate_connection(self.connection, parameters)
       final_resource = resource_builder(resource, parameters)
       self.connection.send(method, final_resource, body).body
     end

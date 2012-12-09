@@ -13,10 +13,11 @@ module Paperback
     # Options are:
     # * :key    => Required. Your goodreads API key
     # * :secret => Required. Your goodreads API secret
+    # * :auth_mode  => Required.  The authentication method to use.  :personal or :oauth
     def initialize(options={})
       self.reset
 
-      (Configuration::MUTABLE_OPTION_KEYS).each do |key|
+      (Configuration::MUTABLE_IMPLEMENTED_OPTION_KEYS + Configuration::MUTABLE_OPTION_KEYS).each do |key|
         self.send "#{key}=", options[key] if options.include?(key)
       end
     end

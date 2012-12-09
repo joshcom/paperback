@@ -1,6 +1,10 @@
 module Paperback
   module Configuration
     MUTABLE_OPTION_KEYS = [:key, :secret, :endpoint]
+
+    # These options are mutable, but their setters are manually implemented
+    MUTABLE_IMPLEMENTED_OPTION_KEYS = [:auth_mode]
+
     READONLY_OPTION_KEYS = [:request_handler]
 
     DEFAULT_ENDPOINT = "https://www.goodreads.com"
@@ -21,9 +25,17 @@ module Paperback
       end
     end
 
+   def auth_mode=(mode)
+      @request_handler = if mode.nil?
+                           nil
+                         else
+                           Auth.create(mode, self)
+                         end
+    end
+
     def reset
       self.endpoint = DEFAULT_ENDPOINT
-      @request_handler = Auth.create(:oauth, self)
+      self.auth_mode = nil
       @key = @secret = nil
       self.request_handler.reset unless self.request_handler.nil?
     end
